@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MKPatients</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MKPatients.styles.css" asp-append-version="true" />
+    <style>#container{display:flex; justify-content:space-between}
+    .footerlink{text-decoration:none;}
+    </style>
+</head>
+<body>
+    <header>
+
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <img src="images/logo.jpg" style="height:100px;width:100px;  />
+            /* image resource: www.freepik.com/free-vector/hospital-logo-design-vector-medical-cross_18246203.htm#query =clinic%20logo&position =6&from_view =keyword&track =ais Image by rawpixel.com on Freepik*/
+
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MK Clinic</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+@*                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="MKCountry" asp-action="Index">Countries</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="MKConcentrationUnit" asp-action="Index">Concentrations</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="MKDiagnosisCategory" asp-action="Index">Diagnosis Categories</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="MKDispensingUnit" asp-action="Index">Dispensing Units</a>
+                        </li>*@
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="MKMedicationType" asp-action="Index">Medication</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="MKPatient" asp-action="Index">Patients</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="MKPatientDiagnosis" asp-action="Index">PatientDiagnosis</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" href="#"  data-bs-toggle="dropdown" aria-expanded="false">
+                                Security
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" asp-area="" asp-controller="MKSecurity" asp-action="Index">User Maintenance</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="MKRole" asp-action="Index">Role Maintenance</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="MKCountry" asp-action="Index">Country</a>
+                        </li>
+
+
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            <div class="text-danger font-weight-bold">@TempData["message"]</div>
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container" id="container">
+            <div>
+                &copy; 2023 <a class="footerlink" href="mailto:mkang5798@conestogac.on.ca">Meng Kang -Section 1</a>
+            </div>
+            <div>
+                <a class="footerlink" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                <a class="footerlink" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </div>
+        
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

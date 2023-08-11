@@ -1,0 +1,34 @@
+﻿@model List<Microsoft.AspNetCore.Identity.IdentityUser>
+
+@{
+    ViewData["Title"] = "Manage Users in Role: " + ViewBag.RoleName;
+    var roleId = ViewBag.RoleId as string;
+    var userId = ViewBag.UserId as string;
+}
+
+<h1>@ViewData["Title"]</h1>
+
+
+<table>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.UserName</td>
+            <td>@user.Email</td>
+            <td>
+                @if (!Context.User.Identity.Name.Equals(user.UserName) || ViewBag.RoleName != "administrators")
+                {
+                    <a asp-controller="MKRole" asp-action="RemoveFromRole" asp-route-roleId="@roleId" asp-route-userId="@user.Id">Remove</a>
+                }
+            </td>
+        </tr>
+      
+    }
+</table>
+    <form asp-controller="MKRole" asp-action="AddUserToRole">
+        <label asp-for="@roleId" class="control-label">Users not in role</label>
+        <select asp-for="@userId" class="form-control" asp-items="ViewBag.UsersNotInRole"></select>
+        <input type="submit" value="Add to Role" class="btn btn-primary" />
+    </form>
+
+
